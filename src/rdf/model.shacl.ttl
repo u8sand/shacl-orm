@@ -1,0 +1,58 @@
+@prefix rdfs: <https://www.w3.org/2000/01/rdf-schema#>
+@prefix sh: <https://www.w3.org/ns/shacl#>
+@prefix xsd: <https://www.w3.org/2001/XMLSchema#>
+
+_:ModelFromRDFShape a sh:NodeShape ;
+  sh:property [
+    sh:path sh:targetClass ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:severity sh:Violation ;
+    sh:message "sh:targetClass is required"@en ;
+  ] ;
+  sh:property [
+    sh:path ( sh:property sh:path ) ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:severity sh:Violation ;
+    sh:message "A path IRI is required"@en ;
+  ] ;
+  sh:property [
+    sh:path ( sh:property sh:name ) ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:severity sh:Violation ;
+    sh:message "A unique name is required"@en ;
+  ] ;
+  sh:property [
+    sh:path ( sh:property sh:description ) ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+    sh:severity sh:Info ;
+    sh:message "A description should be provided"@en ;
+  ] ;
+  sh:property [
+    sh:path ( sh:property sh:minCount ) ;
+    sh:datatype xsd:integer ;
+    sh:defaultValue 0 ;
+    sh:maxCount 1 ;
+    sh:severity sh:Violation
+  ] ;
+  sh:property [
+    sh:path ( sh:property sh:maxCount ) ;
+    sh:datatype xsd:integer ;
+    sh:maxCount 1 ;
+    sh:severity sh:Violation ;
+  ] ;
+  sh:xone (
+    sh:property [
+      sh:path ( sh:property sh:datatype ) ;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+    ]
+    sh:property [
+      sh:path ( sh:property sh:targetClass ) ;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+    ]
+  ) .

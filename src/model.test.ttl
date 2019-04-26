@@ -1,0 +1,35 @@
+@prefix ex: <https://example.com/>
+@prefix rdfs: <https://www.w3.org/2000/01/rdf-schema#>
+@prefix sh: <https://www.w3.org/ns/shacl#>
+@prefix xsd: <https://www.w3.org/2001/XMLSchema#>
+@prefix schema: <https://schema.org/>
+
+ex:Blog a ( rdfs:Class sh:NodeShape ) ;
+  sh:name "Blog"@en ;
+  sh:property [
+    sh:path schema:name ;
+    sh:name "title"@en ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path ex:posts ;
+    sh:name "posts"@en ;
+    sh:class ex:Post ;
+  ] .
+
+ex:Post a ( rdfs:Class sh:NodeShape ) ;
+  sh:name "Post"@en ;
+  sh:property [
+    sh:path schema:name ;
+    sh:name "title"@en ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+  sh:property [
+    sh:path schema:blog ;
+    sh:name "name"@en ;
+    sh:class ex:Blog ;
+  ] .

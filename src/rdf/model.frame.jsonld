@@ -1,0 +1,29 @@
+ {
+  "@context": {
+    "rdfs": "https://www.w3.org/2000/01/rdf-schema#",
+    "sh": "https://www.w3.org/ns/shacl#",
+    "xsd": "https://www.w3.org/2001/XMLSchema#"
+  },
+  "@type": "sh:NodeShape",
+  "sh:targetClass": {
+    "@id": {},
+    "@type": {},
+    "rdfs:label": {}
+  },
+  "sh:property": {
+    "sh:path": {},
+    "sh:class": {
+      "@default": "@null",
+      "rdfs:label": {}
+    },
+    "sh:datatype": {
+      "@default": "@null"
+    },
+    "sh:minCount": {
+      "@default": 0
+    },
+    "sh:maxCount": {
+      "@default": "@null"
+    }
+  }
+}
